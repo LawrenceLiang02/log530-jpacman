@@ -75,8 +75,11 @@ public class PlayerCollisions implements CollisionMap {
      */
     public void playerVersusGhost(Player player, Ghost ghost) {
         pointCalculator.collidedWithAGhost(player, ghost);
-        player.setAlive(false);
-        player.setKiller(ghost);
+        
+        player.loseLife(ghost); //Added this line to lose a life when colliding with a ghost, if the number of lives is 0, the player is set to dead and the killer is ghost
+        
+        //player.setAlive(false);
+        //player.setKiller(ghost);
     }
 
     /**

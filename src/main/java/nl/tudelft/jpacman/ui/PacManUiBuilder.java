@@ -6,6 +6,7 @@ import java.util.Map;
 
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
+import nl.tudelft.jpacman.ui.LifePanel.LifeFormatter;
 
 /**
  * Builder for the JPac-Man UI.
@@ -44,6 +45,12 @@ public class PacManUiBuilder {
      */
     private ScoreFormatter scoreFormatter = null;
 
+
+    /**Way to format the life 
+     * 
+    */
+    private LifeFormatter lifeFormatter = null;
+
     /**
      * Creates a new Pac-Man UI builder without any mapped keys or buttons.
      */
@@ -67,7 +74,7 @@ public class PacManUiBuilder {
             addStartButton(game);
             addStopButton(game);
         }
-        return new PacManUI(game, buttons, keyMappings, scoreFormatter);
+        return new PacManUI(game, buttons, keyMappings, scoreFormatter, lifeFormatter);
     }
 
     /**
@@ -154,6 +161,19 @@ public class PacManUiBuilder {
      */
     public PacManUiBuilder withScoreFormatter(ScoreFormatter scoreFormatter) {
         this.scoreFormatter = scoreFormatter;
+        return this;
+    }
+
+    /**
+     * Provide formatter for the life.
+     *
+     * @param lifeFormatter
+     *         The life formatter to be used.
+     *
+     * @return The builder.
+     */
+    public PacManUiBuilder withLifeFormatter(LifeFormatter lifeFormatter) {
+        this.lifeFormatter = lifeFormatter;
         return this;
     }
 }
